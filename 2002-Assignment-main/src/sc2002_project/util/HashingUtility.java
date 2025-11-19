@@ -20,12 +20,6 @@ public class HashingUtility {
         return Base64.getEncoder().encodeToString(salt);
     }
 
-    /**
-     * Hashes a password using PBKDF2.
-     * @param password The raw password string.
-     * @param salt The salt specific to the user.
-     * @return The Base64 encoded hash of the password.
-     */
     public static String hashPassword(String password, String salt) {
         try {
             byte[] saltBytes = Base64.getDecoder().decode(salt);
@@ -40,7 +34,7 @@ public class HashingUtility {
             return Base64.getEncoder().encodeToString(hash);
 
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            throw new RuntimeException("Error hashing password.", e);
+            throw new RuntimeException("Error: Unable to hash password.", e);
         }
     }
 

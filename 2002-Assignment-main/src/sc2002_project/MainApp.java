@@ -37,9 +37,9 @@ public class MainApp {
         UserDB userDB = new UserDB();
         OpportunityDB oppDB = new OpportunityDB();
         ApplicationDB appDB = new ApplicationDB();
-        CompanyDB companyDB = new CompanyDB(); // Manages Company integrity
+        CompanyDB companyDB = new CompanyDB();
 
-        FileImport fileImporter = new FileImport(userDB, companyDB); // Assuming FileImport requires DBs
+        FileImport fileImporter = new FileImport(userDB, companyDB);
 
         System.out.println("--------------------------------------------------");
 
@@ -54,7 +54,7 @@ public class MainApp {
 
 
         StudentUI studentUI = new StudentUI(internshipController, applicationController);
-        CompanyRepUI companyRepUI = new CompanyRepUI(internshipController, applicationController); // Placeholder
+        CompanyRepUI companyRepUI = new CompanyRepUI(internshipController, applicationController);
 
 
         StaffUI staffUI = new StaffUI(approvalController, reportController);

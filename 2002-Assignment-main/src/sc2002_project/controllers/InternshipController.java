@@ -68,7 +68,6 @@ public class InternshipController {
                 }
             }
 
-            // Closing Date Input (Simple String check for non-empty)
             System.out.println("Input closing date of applications (YYYY-MM-DD):");
             LocalDate closingDate = readDateInput("Date in YYYY-MM-DD format:");
 

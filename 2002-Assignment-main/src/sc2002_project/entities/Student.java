@@ -43,7 +43,7 @@ public class Student extends User {
         System.out.println("-----------------------------------------");
         System.out.println("Student ID:       " + this.getUserID());
         System.out.println("Name:             " + this.getName());
-        System.out.println("Email:            " + this.getEmail()); // Assumes getEmail() exists in User
+        System.out.println("Email:            " + this.getEmail());
         System.out.println("Major:            " + this.getMajor());
         System.out.println("Year of Study:    " + this.getYearOfStudy());
         System.out.println("Active Apps:      " + this.numActiveApps());

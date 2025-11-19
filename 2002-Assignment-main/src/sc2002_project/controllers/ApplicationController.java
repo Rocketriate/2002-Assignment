@@ -28,7 +28,7 @@ public class ApplicationController {
             System.out.print(prompt);
             String input = sc.next().trim();
             if (input.equalsIgnoreCase("CANCEL")) {
-                return -1; // Use -1 as a sentinel value for cancellation
+                return -1;
             }
             try {
                 return Integer.parseInt(input);

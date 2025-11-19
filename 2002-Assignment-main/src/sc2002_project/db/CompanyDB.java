@@ -22,7 +22,6 @@ public class CompanyDB {
 
     private static String standardizeName(String name) {
         if (name == null) return "";
-        // Convert to lowercase, remove all non-alphanumeric characters (spaces, periods, etc.)
         return name.trim().toLowerCase().replaceAll("[^a-z0-9]", "");
     }
 

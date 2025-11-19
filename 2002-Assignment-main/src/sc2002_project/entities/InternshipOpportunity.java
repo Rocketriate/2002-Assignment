@@ -18,8 +18,8 @@ public class InternshipOpportunity {
 	    private OPPORTUNITY_STATUS status;
 	    private boolean visible;
 	    private Company company;
-	    private final String representativeInCharge; //assume will use 0CompanyRep from Company class
-	    private final int slots; // <= 10
+	    private final String representativeInCharge;
+	    private final int slots;
 	    private int approvedCount;
 	    
 	    public InternshipOpportunity(int oppId, String title, INTERNSHIP_LEVEL level,
@@ -119,8 +119,7 @@ public class InternshipOpportunity {
 	    public boolean isOpen(Student student) {
             return this.status == OPPORTUNITY_STATUS.Approved && remainingSlots() > 0;
 	    }
-	    
-	    
+
 	    public void updateStatus(OPPORTUNITY_STATUS newStatus) {
 	    	this.status = newStatus;
 	    }
@@ -143,7 +142,6 @@ public class InternshipOpportunity {
             System.out.println("Description: (Not provided)");
         }
 
-        // Check and print Preferred Major
         String major = this.getPreferredMajor();
         if (major != null && !major.trim().isEmpty()) {
             System.out.println("Preferred Major: " + major);

@@ -33,7 +33,7 @@ public class ApprovalController {
             if (pendingList.isEmpty()) {
                 System.out.println("Error: No company representatives waiting for approval");
             } else {
-                pendingList.forEach(rep -> System.out.println(rep.toString()));
+                pendingList.forEach(CompanyRep::printDetails);
             }
         } else {
             System.out.println("Error: User is not authorised to view pending company representatives");
