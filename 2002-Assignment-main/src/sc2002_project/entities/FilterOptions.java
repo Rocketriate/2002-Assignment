@@ -95,31 +95,47 @@ public class FilterOptions {
     public boolean matches(InternshipOpportunity opportunity) {
         boolean check = true;
         if (this.status != null) {
-            check = this.status.equals(opportunity.getStatus());
+            if (!this.status.equals(opportunity.getStatus())) {
+                return false;
+            };
         }
         if (this.preferredMajor != null) {
-            check = this.preferredMajor.equalsIgnoreCase(opportunity.getPreferredMajor());
+            if (!this.preferredMajor.equals(opportunity.getPreferredMajor())) {
+                return false;
+            };
         }
         if (this.preferredLevel != null) {
-            check = this.preferredLevel.equals(opportunity.getLevel());
+            if (!this.preferredLevel.equals(opportunity.getLevel())) {
+                return false;
+            };
         }
         if (this.closingDate != null) {
-            check = this.closingDate == opportunity.getClosingDate();
+            if (this.closingDate != opportunity.getClosingDate()) {
+                return false;
+            };
         }
         if (this.companyName != null) {
-            check = this.companyName.equals(opportunity.getCompanyName());
+            if (!this.companyName.equals(opportunity.getCompanyName())) {
+                return false;
+            };
         }
         if (this.maxLevel == INTERNSHIP_LEVEL.Basic) {
-            check = opportunity.getLevel() == INTERNSHIP_LEVEL.Basic;
+            if (!this.maxLevel.equals(opportunity.getLevel())) {
+                return false;
+            };
         }
         if (this.currentUser instanceof Student) {
-            check = opportunity.isVisible();
+            if (!opportunity.isVisible()) {
+                return false;
+            };
         }
         if (this.minApproved != 0) {
-            check = opportunity.getApprovedCount() >= this.minApproved;
+            if (opportunity.getApprovedCount() < this.minApproved) {
+                return false;
+            }
         }
 
-        return check;
+        return true;
     }
 
     public void updateFilters() {

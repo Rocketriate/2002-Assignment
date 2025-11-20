@@ -16,7 +16,6 @@ public class InternshipController {
     private final OpportunityDB oppDB;
     private final ApplicationDB appDB;
     private final UserDB userDB;
-    // Removed unused fields: currentOpp, currentApp
     private final Scanner sc = new Scanner(System.in);
 
     public InternshipController(OpportunityDB oppDB, ApplicationDB appDB, UserDB userDB) {
@@ -26,7 +25,6 @@ public class InternshipController {
     }
 
     public void createOpp(String repId) {
-        // 1. Check Authorization
         if (!(userDB.findRep(repId) instanceof CompanyRep rep)) {
             System.out.println("Error: User not found or is not a company representative.");
             return;
@@ -133,7 +131,7 @@ public class InternshipController {
     public void toggleVisible(String repId) {
         if (userDB.findRep(repId) instanceof CompanyRep rep && rep.isApproved() == REP_STATUS.Approved) {
             System.out.println("Please enter the ID of the internship opportunity you wish to change the visibility of");
-            int oppId = sc.nextInt();
+            int oppId = readIntInput("Enter reference ID: ");
             if (rep.getActiveOpps().contains(oppId)) {
                 InternshipOpportunity opp = oppDB.findOpp(oppId);
                 opp.setVisible(!opp.isVisible());
@@ -358,7 +356,7 @@ public class InternshipController {
     private int readIntInput(String prompt) {
         while (true) {
             System.out.print(prompt);
-            String input = sc.next().trim();
+            String input = sc.nextLine().trim();
             if (input.equalsIgnoreCase("CANCEL")) {
                 return -1; // Use -1 as a sentinel value for cancellation
             }

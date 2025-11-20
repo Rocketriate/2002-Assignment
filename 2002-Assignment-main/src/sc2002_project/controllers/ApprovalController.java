@@ -82,7 +82,7 @@ public class ApprovalController {
             String repId = sc.nextLine().trim();
             if (userDB.findRep(repId) instanceof CompanyRep rep) {
                 System.out.println("Do you want to approve this representative? (Y/N)");
-                String choice = sc.next();
+                String choice = sc.nextLine();
                 if (choice.equalsIgnoreCase("y")) {
                     rep.setApproved(true);
                     System.out.println("Company representative " + rep.getName() + " was approved");
@@ -111,7 +111,7 @@ public class ApprovalController {
             if (this.checkOpp(oppId)) {
                 InternshipOpportunity targetOpp = oppDB.findOpp(oppId);
                 System.out.println("Do you want to approve this internship opportunity? (Y/N)");
-                String choice = sc.next();
+                String choice = sc.nextLine();
                 if (choice.equalsIgnoreCase("y")) {
                     targetOpp.setStatus(OPPORTUNITY_STATUS.Approved);
                     CompanyRep rep = (CompanyRep) userDB.findRep(targetOpp.getRepresentativeInCharge());
@@ -142,7 +142,7 @@ public class ApprovalController {
             if (this.checkApp(appId) && appDB.findApp(appId).getWithdrawStatus() == WITHDRAWAL_STATUS.Pending) {
                 Application targetApp = appDB.findApp(appId);
                 System.out.println("Do you want to approve this withdrawal request? (Y/N)");
-                String choice = sc.next();
+                String choice = sc.nextLine();
                 if (choice.equalsIgnoreCase("y")) {
                     targetApp.approveWithdraw();
                     Student requester = (Student) userDB.findStudent(targetApp.getUserId());
@@ -168,7 +168,7 @@ public class ApprovalController {
     private int readIntInput(String prompt) {
         while (true) {
             System.out.print(prompt);
-            String input = sc.next().trim();
+            String input = sc.nextLine().trim();
             if (input.equalsIgnoreCase("CANCEL")) {
                 return -1;
             }

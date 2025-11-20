@@ -26,7 +26,7 @@ public class ApplicationController {
         boolean firstAttempt = true;
         while (true) {
             System.out.print(prompt);
-            String input = sc.next().trim();
+            String input = sc.nextLine().trim();
             if (input.equalsIgnoreCase("CANCEL")) {
                 return -1;
             }
@@ -97,7 +97,7 @@ public class ApplicationController {
                     currentApp.printApp();
                     currentOpp = oppDB.findOpp(currentApp.getOppId());
                     System.out.println("Do you want to accept this application, belonging to " + currentOpp.getTitle() + "? (Y/N)");
-                    String choice = sc.next();
+                    String choice = sc.nextLine();
                     if (choice.equalsIgnoreCase("y")) {
                         currentApp.markSuccessful();
                         System.out.println("Application accepted by company representative " + rep.getName());
@@ -132,7 +132,7 @@ public class ApplicationController {
                 }
                 currentOpp = oppDB.findOpp(currentApp.getOppId());
                 System.out.println("Are you sure you want to accept this internship opportunity? (Y/N)");
-                String choice = sc.next();
+                String choice = sc.nextLine();
                 if (choice.equalsIgnoreCase("y")) {
                     if (currentOpp.getStatus()==OPPORTUNITY_STATUS.Approved) {
                         student.acceptSuccess(appId);
@@ -170,7 +170,7 @@ public class ApplicationController {
         }
         if (this.checkApp(appId)) {
             System.out.println("Are you sure you want to request to withdraw this internship application? (Y/N)");
-            String choice = sc.next();
+            String choice = sc.nextLine();
             if (choice.equalsIgnoreCase("y")) {
                 Student student = (Student) userDB.findStudent(studentId);
                 Application app = appDB.findApp(appId);
